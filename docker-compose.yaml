@@ -1,0 +1,17 @@
+version: '2'
+services:
+    app:
+        build: .
+        command: python -u app.py
+        ports:
+            - 5000:5000
+        volumes:
+            - .:/istari
+        links:
+            - mongodb
+        depends_on:
+            - mongodb
+    mongodb:
+        image: mongo:3.4.20-jessie
+        ports:
+            - 27017:27017
