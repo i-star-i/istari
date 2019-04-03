@@ -1,12 +1,6 @@
 Modules Reference
 =================
 
-Main application
-----------------
-
-.. automodule:: app
-    :members:
-
 Dummy profiles
 --------------
 
