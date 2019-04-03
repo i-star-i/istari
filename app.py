@@ -13,22 +13,32 @@ def home():
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
-    """ #TODO: route that handles register form submission
+    """ route that handles registration form submission 
         by inserting new document in database
+        #TODO: add security!
     """
     if request.method == 'POST':
         profile_doc = {
-            'name': request.form['name'],
-            'github_username': request.form['github_username']
+            'first_name': request.form['first_name'],
+            'surname': request.form['surname'],
+            'email': request.form['email'],
+            'orcid': request.form['orcid'],
+            'github': request.form['github'],
+            'institution_url': request.form['institution_url'],
+            'disciplines': request.form.getlist('disciplines'),
+            'languages': request.form.getlist('languages')
         }
         db.profiles.insert_one(profile_doc)
         return redirect(url_for('confirm'))
     else:
-        return render_template('register.html')
+        return render_template('register.html', page='register')
 
 @app.route('/confirm')
 def confirm():
-    return "#TODO confirmation of registration page"
+    """ route that outputs confirmation of registration
+        #TODO: mechanism to determine if registration successful!
+    """
+    return render_template('confirm.html', page='confirmation')
 
 @app.route('/search')
 def search():
