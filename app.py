@@ -9,11 +9,11 @@ app = Flask(__name__)
 client = MongoClient(os.environ['MONGODB_HOST'],27017)
 db = client.profiles
 
+#TODO: automate this at build stage
 if "jacs" not in db.list_collection_names():
     import json
     with open(os.path.join("tools", "jacs.json"), "r") as f:
         db.jacs.insert_one(json.load(f))
-
 
 @app.route('/')
 def home():
@@ -66,7 +66,10 @@ def confirm():
 def search():
     """ A route to the search page.
     """
-    return render_template('search.html')
+    #_jacs = db.jacs.find()
+    #areas = [area for area in _jacs.area]
+    #disciplines = [area for area in _jacs.area]
+    return render_template('search.html', areas=areas, disciplines=disciplines, page='search')
 
 @app.route('/results', methods=['GET', 'POST'])
 def results():

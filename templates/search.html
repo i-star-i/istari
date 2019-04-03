@@ -4,28 +4,37 @@
 <h1>Locate a reviewer on i-star-i</h1>
 <form action="/results" method="POST">
 	<div class="form-group">
-		<select class="form-control" name="requirement">
-			<!-- #TODO make the options dynamic, some classification system? -->
-			<option value="" disabled selected>What are you looking for?</option>
-			<option value="1">Code-literate peer reviewer</option>
-			<option value="2">Potential collaborator</option>
+		<label for="requirement">What are you looking for?</label><br/>
+		<input type="radio" name="requirement" value="1" checked>
+		Code-literate peer reviewer<br/>
+		<input type="radio" name="requirement" value="2">
+		Potential collaborator
+	</div>
+	<div class="form-group">
+		<label for="subject_area">Select subject areas</label>
+		<select class="form-control dropdown-primary" name="subject_area" multiple searchable="Search here..">
+			<!-- #TODO make the options dynamic, and filter the other ones -->
+			<option value="1">Medicine &amp; dentistry</option>
+			<option value="2">Subjects allied to medicine</option>
+			<option value="3">Biological sciences</option>
+			<option value="4">Veterinary science</option>
+			<option value="5">Agriculture &amp; related subjects</option>
+			<option value="6">Physical sciences</option>
+			<option value="7">Mathematical sciences</option>
 		</select>
 	</div>
 	<div class="form-group">
-		<select class="form-control" name="disciplines" searchable="Search here..">
-			<!-- #TODO make the options dynamic, some classification system? -->
-			<option value="" disabled selected>Select your discipline</option>
-			<option value="1">Biomedical imaging</option>
-			<option value="2">Architecture</option>
-			<option value="3">Acoustic engineering</option>
-			<option value="4">Solar cell physics</option>
-			<option value="5">Numerical modelling</option>
-		</select>
-	</div>
-	<div class="form-group">
-		<select class="form-control" name="languages" multiple searchable="Search here..">
+		<label for="disciplines">Select principle subjects</label>
+		<select class="form-control multi-select dropdown-primary" name="disciplines" multiple searchable="Search here..">
 			<!-- #TODO make the options dynamic -->
-			<option value="" disabled selected>Select your languages</option>
+			<option value="1">Broadly-based programmes within medicine &amp; dentistry</option>
+			<option value="2">Pre-clinical medicine</option>
+		</select>
+	</div>
+	<div class="form-group">
+		<label for="subject_area">Select principle languages</label>
+		<select class="form-control multi-select" name="languages" multiple searchable="Search here..">
+			<!-- #TODO make the options dynamic -->
 			<option value="1">Python</option>
 			<option value="2">C</option>
 			<option value="3">C++</option>
