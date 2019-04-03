@@ -43,6 +43,8 @@ def email_gen(name, surname):
 
 
 def create_dummies(records=10):
+    """ Creates a list of dummy records to be used for testing purposes.
+    """
 
     global db
 
@@ -67,8 +69,5 @@ def create_dummies(records=10):
     return values
 
 
-# def reviewers(language, discipline):
-
 if __name__ == "__main__":
     print(create_dummies(10))
-
