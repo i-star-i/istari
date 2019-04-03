@@ -8,6 +8,7 @@
 		<h3> {{ profile.first_name }} {{ profile.surname }} </h3>
 		<div class="row">
 			<div class="col-md-5">
+				<h4>Languages</h4>
 				<ul>
 					{% for lang in profile.language %}
 					<li>{{ lang }}</li>
@@ -15,6 +16,7 @@
 				</ul>
 			</div>
 			<div class="col-md-5">
+				<h4>Principle subjects</h4>
 				<ul>
 					{% for disc in profile.disciplines %}
 					<li>{{ disc }}</li>
