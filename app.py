@@ -17,6 +17,8 @@ if "jacs" not in db.list_collection_names():
 
 @app.route('/')
 def home():
+    """ route for the home page.
+    """
     return render_template('home.html', page='home')
 
 
@@ -62,7 +64,7 @@ def confirm():
 
 @app.route('/search')
 def search():
-    """ #TODO: search view renders search form
+    """ A route to the search page.
     """
     return render_template('search.html')
 
