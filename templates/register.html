@@ -1,5 +1,60 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<h1>Register for i-star-i</h1>
 <form action="/register" method="POST">
-	<input type="text" name="name">
-	<input type="text" name="github_username">
-	<button type="submit">submit</button>
+	<div class="form-group">
+		<label for="first_name">First name</label>
+		<input class="form-control" type="text" required name="first_name">
+	</div>
+	<div class="form-group">
+		<label for="surname">Surname</label>
+		<input class="form-control" type="text" required name="surname">
+	</div>
+	<div class="form-group">
+		<label for="email">Email</label>
+		<input class="form-control" type="email" required name="email">
+	</div>
+	<div class="form-group">
+		<label for="orcid">ORCID</label>
+		<input class="form-control" type="text" name="orcid">
+	</div>
+	<div class="form-group">
+		<label for="github">Github username</label>
+		<input class="form-control" type="text" name="github">
+	</div>
+	<div class="form-group">
+		<label for="institution_url">Institution URL</label>
+		<input class="form-control" type="text" name="institution_url">
+	</div>
+	<div class="form-group">
+		<select class="form-control" name="disciplines" multiple searchable="Search here..">
+			<!-- #TODO make the options dynamic, some classification system? -->
+			<option value="" disabled selected>Select your disciplines</option>
+			<option value="1">Biomedical imaging</option>
+			<option value="2">Architecture</option>
+			<option value="3">Acoustic engineering</option>
+			<option value="4">Solar cell physics</option>
+			<option value="5">Numerical modelling</option>
+		</select>
+	</div>
+	<div class="form-group">
+		<select class="form-control" name="languages" multiple searchable="Search here..">
+			<!-- #TODO make the options dynamic -->
+			<option value="" disabled selected>Select your languages</option>
+			<option value="1">Python</option>
+			<option value="2">C</option>
+			<option value="3">C++</option>
+			<option value="4">C&#35;</option>
+			<option value="5">Fortran</option>
+		</select>
+	</div>
+	<div class="form-check">
+	    <input type="checkbox" class="form-check-input" name="t_and_c">
+		<label class="form-check-label" for="t_and_c">Agree to <a href="#TODO">terms &amp; conditions</a></label>
+	  </div>	
+	<div class="form-group">
+		<button class="form-control btn-primary" type="submit">submit</button>
+	</div>
 </form>
+{% endblock %}
