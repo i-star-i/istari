@@ -1,0 +1,31 @@
+{% extends 'layout.html' %}
+{% block content %}
+<h1>Results</h1>
+<p>Here are a list of code-literate reviewers matching your search preferences.</p>
+<ul class="list-group">
+{% for profile in profiles %}
+	<li class="list-group-item">
+		<h3> {{ profile.first_name }} {{ profile.surname }} </h3>
+		<div class="row">
+			<div class="col-md-5">
+				<ul>
+					{% for lang in profile.language %}
+					<li>{{ lang }}</li>
+					{% endfor %}
+				</ul>
+			</div>
+			<div class="col-md-5">
+				<ul>
+					{% for field in profile.disciplines %}
+					<li>{{ field }}</li>
+					{% endfor %}
+				</ul>
+			</div>
+			<div class="col-md-2">
+				<a href="#" class="btn-primary form-control">Contact</a>
+			</div>
+		</div>
+	</li>
+{% endfor %}
+</ul>
+{% endblock %}
