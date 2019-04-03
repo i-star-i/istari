@@ -13,22 +13,17 @@
 	<div class="form-group">
 		<label for="subject_area">Select subject areas</label>
 		<select class="form-control dropdown-primary" name="subject_area" multiple searchable="Search here..">
-			<!-- #TODO make the options dynamic, and filter the other ones -->
-			<option value="1">Medicine &amp; dentistry</option>
-			<option value="2">Subjects allied to medicine</option>
-			<option value="3">Biological sciences</option>
-			<option value="4">Veterinary science</option>
-			<option value="5">Agriculture &amp; related subjects</option>
-			<option value="6">Physical sciences</option>
-			<option value="7">Mathematical sciences</option>
+		{% for key, value in areas.items() %}
+			<option value="{{ key }}">{{ value }}</option>
+		{% endfor %}
 		</select>
 	</div>
 	<div class="form-group">
 		<label for="disciplines">Select principle subjects</label>
 		<select class="form-control multi-select dropdown-primary" name="disciplines" multiple searchable="Search here..">
-			<!-- #TODO make the options dynamic -->
-			<option value="1">Broadly-based programmes within medicine &amp; dentistry</option>
-			<option value="2">Pre-clinical medicine</option>
+		{% for key, value in disciplines.items() %}
+			<option value="{{ key }}">{{ value }}</option>
+		{% endfor %}
 		</select>
 	</div>
 	<div class="form-group">

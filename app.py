@@ -42,7 +42,10 @@ def register():
         db.profiles.insert_one(profile_doc)
         return redirect(url_for('confirm'))
     else:
-        return render_template('register.html', page='register')
+        _jacs = db.jacs.find_one()
+        areas = _jacs['area']
+        discs = _jacs['discipline']
+        return render_template('register.html', disciplines=discs, areas=areas, page='register')
 
 @app.route("/dummy", methods=["GET", "POST"])
 def register_dummies():
@@ -66,10 +69,10 @@ def confirm():
 def search():
     """ A route to the search page.
     """
-    #_jacs = db.jacs.find()
-    #areas = [area for area in _jacs.area]
-    #disciplines = [area for area in _jacs.area]
-    return render_template('search.html', areas=areas, disciplines=disciplines, page='search')
+    _jacs = db.jacs.find_one()
+    areas = _jacs['area']
+    discs = _jacs['discipline']
+    return render_template('search.html', areas=areas, disciplines=discs, page='search')
 
 @app.route('/results', methods=['GET', 'POST'])
 def results():
