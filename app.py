@@ -2,6 +2,8 @@ import os
 from flask import Flask, redirect, url_for, request, render_template
 from pymongo import MongoClient
 
+from tools.dummy_db import create_dummies
+
 app = Flask(__name__)
 
 client = MongoClient(os.environ['MONGODB_HOST'],27017)
@@ -13,7 +15,7 @@ def home():
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
-    """ route that handles registration form submission 
+    """ route that handles registration form submission
         by inserting new document in database
         #TODO: add security!
     """
@@ -33,6 +35,17 @@ def register():
     else:
         return render_template('register.html', page='register')
 
+@app.route("/dummy", methods=["GET", "POST"])
+def register_dummies():
+    """ Insert dummy records in the database
+    """
+    if request.method == "POST":
+        number = request.form["number"]
+        prof = create_dummies(int(number))
+        db.profiles.insert_many(prof)
+        return redirect(url_for("test"))
+    else:
+        return render_template("dummy.html")
 @app.route('/confirm')
 def confirm():
     """ route that outputs confirmation of registration
