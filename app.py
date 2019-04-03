@@ -29,6 +29,7 @@ def register():
         #TODO: add security!
     """
     if request.method == 'POST':
+        _jacs = db.jacs.find_one()
         profile_doc = {
             'first_name': request.form['first_name'],
             'surname': request.form['surname'],
@@ -78,7 +79,21 @@ def search():
 def results():
     _profiles = db.profiles.find()
     profiles = [profile for profile in _profiles]
+    for profile in profiles:
+        try:
+            profile['disciplines'] = disc_names_from_codes(profile['disciplines'])
+        except KeyError:
+            profile['disciplines'] = ""
     return render_template('results.html', profiles=profiles)
+
+def disc_names_from_codes(codes):
+    """ gets the discipline names from a list of discipline JACS codes
+        #TODO: this belongs somewhere else
+    """
+    _jacs = db.jacs.find_one()
+    all_discs = _jacs['discipline']
+    discs = [all_discs[code] for code in codes]
+    return discs
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', debug=True)
