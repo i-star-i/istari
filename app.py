@@ -9,9 +9,16 @@ app = Flask(__name__)
 client = MongoClient(os.environ['MONGODB_HOST'],27017)
 db = client.profiles
 
+if "jacs" not in db.list_collection_names():
+    import json
+    with open(os.path.join("tools", "jacs.json"), "r") as f:
+        db.jacs.insert_one(json.load(f))
+
+
 @app.route('/')
 def home():
     return render_template('home.html', page='home')
+
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
