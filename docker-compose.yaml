@@ -9,6 +9,8 @@ services:
             - .:/istari
         links:
             - mongodb
+        environment:
+            MONGODB_HOST: mongodb
         depends_on:
             - mongodb
     mongodb:

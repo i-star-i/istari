@@ -4,8 +4,11 @@ from pymongo import MongoClient
 
 app = Flask(__name__)
 
-client = MongoClient('eab092bcc2ca', 27017)
-db = client.tododb
+#client = MongoClient('eab092bcc2ca', 27017)
+client = MongoClient(
+            os.environ['MONGODB_HOST'],
+                27017)
+db = client.profiles
 
 @app.route('/')
 def hello():
