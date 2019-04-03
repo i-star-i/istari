@@ -1,2 +1,4 @@
 flask
 pymongo
+sphinx>=2.0.0
+recommonmark
