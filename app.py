@@ -56,9 +56,10 @@ def register_dummies():
         number = request.form["number"]
         prof = create_dummies(int(number))
         db.profiles.insert_many(prof)
-        return redirect(url_for("test"))
+        return redirect(url_for("confirm"))
     else:
         return render_template("dummy.html")
+
 @app.route('/confirm')
 def confirm():
     """ route that outputs confirmation of registration
